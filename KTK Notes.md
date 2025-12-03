@@ -1,86 +1,91 @@
-# **KTK Notes** 
+# **KTK Notes**
+
+### 
+
+### &nbsp;                         
+
+### 
+
+### **INFUSTRUCTURE**
+
+* **Battle System**
+* **Deck Building System**
+* **Card \& Deck Database**
+* **(Integration Systems)**
+
+### 
+
+### 
+
+### 
+
+### **Deck Builder**
+
+
+
+##### 	**Deck Construction**
+
+&nbsp;		1 **Deck** = 4/20 Cards 	(MIN/MAX)
+
+&nbsp;		1 **King** 			(MIN/MAX)
+
+&nbsp;		2/10 **Guardians** 		(MIN/MAX)
+
+&nbsp;		1/3 **Environments** 	(MIN/MAX)
+
+		**Items** 			(**NO** MIN/MAX)
 
 
 
 
 
+##### 	**Cards**
 
-
-### **Deck Construction** 
-
-1 **Deck** = 4/20 Cards 	(MIN/MAX)
-
-1 **King** 			(MIN/MAX) 
-
-2/10 **Guardians** 		(MIN/MAX)
-
-1/3 **Environments** 	(MIN/MAX)
-
-**Items** 			(**NO** MIN/MAX)
+&nbsp;		( **Type** + ***Attributes*** )
 
 
 
+###### 		**ITEM**
 
+			***Name***
 
-#### **Cards** 
+			***Ability*** (Effect, Description)
 
-( **Type** \& ***Attributes*** )
-
-
-
-###### **ITEM**
-
-***Name***
-
-***Ability*** (Effect, Description)
-
-***Element*** ( Spirit / Chaos / Space / Time / Nature )
+			***Element*** ( Spirit / Chaos / Space / Time / Nature )
 
 
 
-###### **ENVIRO** 
+###### 		**ENVIRO**
 
-***Name***
+			***Name***
 
-***Ability*** (Effect, Description)
+			***Ability*** (Effect, Description)
 
-***Element*** ( Spirit / Chaos / Space / Time / Nature )
-
-
-
-###### **MINION**
-
-***Type*** 	( King / Pillar / Core / Noxious / Echo / Beast )
-
-***Element*** ( Spirit / Chaos / Space / Time / Nature )
-
-***Ability*** (Effect, Description)
-
-***Name***
-
-***ATK***
-
-***HP***
+			***Element*** ( Spirit / Chaos / Space / Time / Nature )
 
 
 
+###### 		**MINION**
 
+			***Type*** 	( King / Pillar / Core / Noxious / Echo / Beast )
 
+			***Element*** ( Spirit / Chaos / Space / Time / Nature )
 
+			***Ability*** (Effect, Description)
 
+			***Name***
 
+			***ATK***
 
+			***HP***
 
+### 
 
+### 
 
+### 
 
-
-
-
-
-
-
-### **Battle** 
+### **Battle**
 
 
 
@@ -92,28 +97,5 @@
 
 
 
-
-
-
-
-### **INFUSTRUCTURE** 
-
-* **Battle System** 
-* **Deck Building System**
-* **Card \& Deck Database** 
-* **(Integration Systems)**
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+### 
 

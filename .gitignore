@@ -55,3 +55,7 @@ nunit-*.xml
 
 # VisualStudio
 .vs/
+
+# SQLServer
+*.dbmdl
+*.jfm

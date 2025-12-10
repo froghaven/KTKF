@@ -24,7 +24,7 @@ namespace System_Battle
             this.Away = Away;
             Player rpsVictor; 
 
-            do { rpsVictor = RockPaperScissors(Home, Away).Key; }
+            do { rpsVictor = RockPaperScissors(Home, Away).Value; }
             while (rpsVictor == null);
 
 
@@ -35,7 +35,7 @@ namespace System_Battle
 
 
 
-        public static KeyValuePair<Player?, string> RockPaperScissors(Player home, Player away)
+        public static KeyValuePair<string, Player?> RockPaperScissors(Player home, Player away)
         {
             Dictionary<string, string> rpsKey = new Dictionary<string, string>()
             {
@@ -44,12 +44,12 @@ namespace System_Battle
                 { "paper", "scissors"}
             };
 
-            Dictionary<Player?, string> victorKey = new Dictionary<Player?, string>()
+            Dictionary<string, Player?> victorKey = new Dictionary<string, Player?>()
             {
-                { null, "Tie!" },
-                { home, "Home!"},
-                { away, "Away!"}
-            }; 
+                { "Tie!", null  },
+                { "Home!", home },
+                { "Away!", away}
+            };
 
 
            if (away.SelectedAction == home.SelectedAction) { return victorKey.ElementAt(0); }

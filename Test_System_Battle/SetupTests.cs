@@ -29,7 +29,7 @@ namespace Test_System_Battle
             away.SelectedAction = awayInput;
 
 
-            Assert.Equal(Battler.RockPaperScissors(home, away).Value, expectedVictor); 
+            Assert.Equal(Battler.RockPaperScissors(home, away).Key, expectedVictor); 
         }
     }
 }

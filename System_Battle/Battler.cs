@@ -11,28 +11,46 @@ namespace System_Battle
         // TODO : Hookup RPS & SelectP1 System For Actual Player Input and Selection 
 
 
-
-        public Player Home; 
-        public Player Away;
+        public List<Player> Players = new List<Player>();
 
 
-        public Battler(Player Home, Player Away) 
+        public Battler(Player player)
         {
-            this.Home = Home;
-            this.Away = Away;
-            Player rpsVictor; 
+            Player cpu = new Player();
 
-            do { rpsVictor = RockPaperScissors(Home, Away).Value; }
-            while (rpsVictor == null);
+            // RPS for player 1
+            Player rpsVictor;
+            do { rpsVictor = RockPaperScissors(player, cpu).Value; } while (rpsVictor == null);
 
 
-            SelectPlayer1(rpsVictor, rpsVictor.SelectedAction); 
+            if (rpsVictor.SelectedAction == "Player")
+            {
+                player.ID = 1; Players.Add(player);
+                cpu.ID = 2; Players.Add(cpu);
+            }
+            else
+            {
+                cpu.ID = 1; Players.Add(cpu);
+                player.ID = 2; Players.Add(player);
+            }
         }
-
-        public void SelectPlayer1(Player rpsVictor, string selectionInput)
+        public Battler(Player home, Player away) 
         {
-            if (selectionInput == "Home") { Home.ID = 1; Away.ID = 2; }
-            else { Away.ID = 1; Home.ID = 2; }
+            // RPS for player 1
+            Player rpsVictor; 
+            do { rpsVictor = RockPaperScissors(home, away).Value; } while (rpsVictor == null);
+            
+
+            if (rpsVictor.SelectedAction == "Home") 
+            {
+                home.ID = 1; Players.Add(home);
+                away.ID = 2; Players.Add(away);
+            }
+            else 
+            {
+                away.ID = 1; Players.Add(away);
+                home.ID = 2; Players.Add(home);
+            }
         }
 
         public static KeyValuePair<string, Player?> RockPaperScissors(Player home, Player away)
@@ -56,8 +74,5 @@ namespace System_Battle
            else if (rpsKey[away.SelectedAction] == home.SelectedAction) { return victorKey.ElementAt(1); }
            else { return victorKey.ElementAt(2); }
         }
-
-
-       
     }
 }

@@ -2,7 +2,7 @@
 using System;
 
 
-namespace DeckBuilder
+namespace System_DeckBuilder
 {
     public class Card
     {

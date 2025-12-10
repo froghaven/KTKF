@@ -1,23 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using static System_Battle.Player;
-
+﻿
 
 
 namespace System_Battle
 {
+
+
+
     public class Battler
     {
+        // TODO : Hookup RPS & SelectP1 System For Actual Player Input and Selection 
+
+
 
         public Player Home; 
         public Player Away;
 
 
-        // TODO : Hookup RPS & SelectP1 System For Actual Player Input and Selection 
         public Battler(Player Home, Player Away) 
         {
             this.Home = Home;
@@ -31,9 +29,11 @@ namespace System_Battle
             SelectPlayer1(rpsVictor, rpsVictor.SelectedAction); 
         }
 
-        
-
-
+        public void SelectPlayer1(Player rpsVictor, string selectionInput)
+        {
+            if (selectionInput == "Home") { Home.ID = 1; Away.ID = 2; }
+            else { Away.ID = 1; Home.ID = 2; }
+        }
 
         public static KeyValuePair<string, Player?> RockPaperScissors(Player home, Player away)
         {
@@ -58,10 +58,6 @@ namespace System_Battle
         }
 
 
-        public void SelectPlayer1(Player rpsVictor, string selectionInput)
-        {
-            if (selectionInput == "Home") { Home.ID = 1; Away.ID = 2; }
-            else { Away.ID = 1; Home.ID = 2; }
-        }
+       
     }
 }

@@ -11,25 +11,43 @@ namespace System_Battle
 {
     public class Battler
     {
-        public Battler(Player player1, Player player2) 
+        public Battler(Player Home, Player Away) 
         {
             // RPS for 1st Players 
-            RockPaperScissors($"{player1.SelectedAction}", $"{player2.SelectedAction}");
+            do
+            {
+                RockPaperScissors($"{Home.SelectedAction}", $"{Away.SelectedAction}");
+            }
+            while (Home.SelectedAction == Away.SelectedAction); 
+            
+
+
 
 
         }
 
+        
 
 
-        public void RockPaperScissors(string player1Input, string player2Input)
+
+        public static string RockPaperScissors(string homeInput, string awayInput)
         {
-            if (player1Input == player2Input)
+            Dictionary<string, string> rpsKey = new Dictionary<string, string>()
             {
-                // Play again 
-            }
+                { "rock", "paper"},
+                { "scissors", "rock"},
+                { "paper", "scissors"}
+            };
 
 
+           string outputMessage="";
 
+           if (awayInput == homeInput) { outputMessage = "Tie!"; }
+           if ( rpsKey[homeInput] == awayInput ) { outputMessage = "Away!"; }
+           else if (rpsKey[awayInput] == homeInput) { outputMessage = "Home!"; }
+
+
+           return outputMessage; 
         }
 
 

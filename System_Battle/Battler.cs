@@ -13,14 +13,30 @@ namespace System_Battle
 
         public List<Player> Players = new List<Player>();
 
+        public static List<string> COMessages = new List<string>() 
+        {
+            "KTK! : Rock, Paper, Scissors! The Winner Decides Who Plays First!",
+            " Shoot Again!",
+            " IS THE VICTOR !!!",
+            "Choose Who Will Go First!", 
+            "Formation Setup Phase! Place Your King!",
+            "Formation Setup Phase! Fill In Your Formation!"
+
+        };
+
 
         public Battler(Player player)
         {
             Player cpu = new Player();
 
-            // RPS for player 1
+
+            Console.WriteLine(COMessages[0]);
             Player rpsVictor;
-            do { rpsVictor = RockPaperScissors(player, cpu).Value; } while (rpsVictor == null);
+            do {
+                var rpsResults = RockPaperScissors(player, cpu);
+                Console.WriteLine(rpsResults.Key);
+                rpsVictor = rpsResults.Value;
+            }   while (rpsVictor == null);
 
 
             if (rpsVictor.SelectedAction == "Player")
@@ -34,19 +50,22 @@ namespace System_Battle
                 player.ID = 2; Players.Add(player);
             }
         }
-        public Battler(Player home, Player away) 
+        public Battler(Player home, Player away)
         {
-            // RPS for player 1
-            Player rpsVictor; 
-            do { rpsVictor = RockPaperScissors(home, away).Value; } while (rpsVictor == null);
-            
+            Player rpsVictor;
+            do { 
+                var rpsResults = RockPaperScissors(home, away);
+                Console.WriteLine(rpsResults.Key);
+                rpsVictor = rpsResults.Value;
+            }   while (rpsVictor == null);
 
-            if (rpsVictor.SelectedAction == "Home") 
+
+            if (rpsVictor.SelectedAction == "Home")
             {
                 home.ID = 1; Players.Add(home);
                 away.ID = 2; Players.Add(away);
             }
-            else 
+            else
             {
                 away.ID = 1; Players.Add(away);
                 home.ID = 2; Players.Add(home);
@@ -64,15 +83,21 @@ namespace System_Battle
 
             Dictionary<string, Player?> victorKey = new Dictionary<string, Player?>()
             {
-                { "Tie!", null  },
-                { "Home!", home },
-                { "Away!", away}
+                { "Tie!" + COMessages[1], null  },
+                { "Home" + COMessages[2], home },
+                { "Away" + COMessages[2], away}
             };
 
 
-           if (away.SelectedAction == home.SelectedAction) { return victorKey.ElementAt(0); }
-           else if (rpsKey[away.SelectedAction] == home.SelectedAction) { return victorKey.ElementAt(1); }
-           else { return victorKey.ElementAt(2); }
+            if (away.SelectedAction == home.SelectedAction) { return victorKey.ElementAt(0); }
+            else if (rpsKey[away.SelectedAction] == home.SelectedAction) { return victorKey.ElementAt(1); }
+            else { return victorKey.ElementAt(2); }
+        }
+
+
+        public void EnterFormationLayoutPhase(List<Player> Players)
+        {
+            Console.WriteLine("Formation Layout Phase!");
         }
     }
 }

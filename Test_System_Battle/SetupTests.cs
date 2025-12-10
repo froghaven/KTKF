@@ -13,26 +13,32 @@ namespace Test_System_Battle
 
         [Theory]
 
-        [InlineData ("rock", "scissors", "Home!")]
-        [InlineData ("rock", "paper", "Away!")]
-        [InlineData ("rock", "rock", "Tie!")]
+        [InlineData ("rock", "scissors", 1)]
+        [InlineData ("rock", "paper", 2)]
+        [InlineData ("rock", "rock", 0)]
 
-        [InlineData("paper", "paper", "Tie!")]
-        [InlineData ("paper", "rock", "Home!")]
-        [InlineData ("paper", "scissors", "Away!")]
+        [InlineData("paper", "paper", 0)]
+        [InlineData ("paper", "rock", 1)]
+        [InlineData ("paper", "scissors", 2)]
 
-        [InlineData ("scissors", "scissors", "Tie!")]
-        [InlineData ("scissors", "paper", "Home!")]
-        [InlineData ("scissors", "rock", "Away!")]
-        public void RPS(string homeInput, string awayInput, string expectedVictor)
+        [InlineData ("scissors", "scissors", 0)]
+        [InlineData ("scissors", "paper", 1)]
+        [InlineData ("scissors", "rock", 2)]
+        public void RPS(string homeInput, string awayInput, int expectedVictoryMessageIndex)
         {
-            Player home = new Player();
-            Player away = new Player();
-            home.SelectedAction = homeInput;
-            away.SelectedAction = awayInput;
+            List<string> victoryMessages = new List<string>()
+            {
+                "Tie! Shoot Again!",
+                "Home IS THE VICTOR!",
+                "AWAY IS THE VICTOR!"
+            }; 
 
 
-            Assert.Equal(Battler.RockPaperScissors(home, away).Key, expectedVictor); 
+            Player home = new Player(); home.SelectedAction = homeInput;
+            Player away = new Player(); away.SelectedAction = awayInput;
+
+
+            Assert.Equal(Battler.RockPaperScissors(home, away).Key, victoryMessages[expectedVictoryMessageIndex]); 
         }
     }
 }

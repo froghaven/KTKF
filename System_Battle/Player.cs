@@ -14,11 +14,11 @@ namespace System_Battle
         public int ID { get; set; }
         public int TurnNumber { get; set; }
         public Type PlayerType { get; set; }
-        public Action SelectedAction { get; set; }
+        public string SelectedAction { get; set; }
 
 
 
-
+        public Player() { }
 
         public enum Type
         {
@@ -31,9 +31,9 @@ namespace System_Battle
         }
         public enum Action
         {
-            Rock = 1, 
-            Paper = 2, 
-            Scissors = 3
+            Rock, 
+            Paper, 
+            Scissors
         }
     }
 }

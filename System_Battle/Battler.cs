@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using static System_Battle.Player;
@@ -11,26 +12,30 @@ namespace System_Battle
 {
     public class Battler
     {
+
+        public Player Home; 
+        public Player Away;
+
+
+        // TODO : Hookup RPS & SelectP1 System For Actual Player Input and Selection 
         public Battler(Player Home, Player Away) 
         {
-            // RPS for 1st Players 
-            do
-            {
-                RockPaperScissors($"{Home.SelectedAction}", $"{Away.SelectedAction}");
-            }
-            while (Home.SelectedAction == Away.SelectedAction); 
-            
+            this.Home = Home;
+            this.Away = Away;
+            Player rpsVictor; 
+
+            do { rpsVictor = RockPaperScissors(Home, Away).Key; }
+            while (rpsVictor == null);
 
 
-
-
+            SelectPlayer1(rpsVictor, rpsVictor.SelectedAction); 
         }
 
         
 
 
 
-        public static string RockPaperScissors(string homeInput, string awayInput)
+        public static KeyValuePair<Player?, string> RockPaperScissors(Player home, Player away)
         {
             Dictionary<string, string> rpsKey = new Dictionary<string, string>()
             {
@@ -39,21 +44,24 @@ namespace System_Battle
                 { "paper", "scissors"}
             };
 
+            Dictionary<Player?, string> victorKey = new Dictionary<Player?, string>()
+            {
+                { null, "Tie!" },
+                { home, "Home!"},
+                { away, "Away!"}
+            }; 
 
-           string outputMessage="";
 
-           if (awayInput == homeInput) { outputMessage = "Tie!"; }
-           if ( rpsKey[homeInput] == awayInput ) { outputMessage = "Away!"; }
-           else if (rpsKey[awayInput] == homeInput) { outputMessage = "Home!"; }
-
-
-           return outputMessage; 
+           if (away.SelectedAction == home.SelectedAction) { return victorKey.ElementAt(0); }
+           else if (rpsKey[away.SelectedAction] == home.SelectedAction) { return victorKey.ElementAt(1); }
+           else { return victorKey.ElementAt(2); }
         }
 
 
-        public void SelectPlayer1()
+        public void SelectPlayer1(Player rpsVictor, string selectionInput)
         {
-
+            if (selectionInput == "Home") { Home.ID = 1; Away.ID = 2; }
+            else { Away.ID = 1; Home.ID = 2; }
         }
     }
 }

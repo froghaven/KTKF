@@ -11,8 +11,8 @@
 
 ## **Battle**
 ***Formation Position***s  ( Deck / Hand / King / PILL1 / PILL2 / FL1 / FL2 / FL3 )
-Formations (Player1, Player2..., OP1, OP2)
-Field (Formations, ENVIRO, DISC)
+**Formations** (Player1, Player2..., OP1, OP2)
+**Field** (Formations, ENVIRO, DISC)
 
 
 ## **Deck Builder**
@@ -37,9 +37,16 @@ Field (Formations, ENVIRO, DISC)
 (An ability's effect(s) is represented in a query, that is plugged into a method and processed during compile.)
 
 
-Expression Example : 
-(Ability that target a single opponent's guardian and reduces their health)
-[OP1; PILL2; -HP]
+Expression Examples : 
+- ( Ability that target a single opponent's guardian and reduces their health )
+	[OP1; PILL2; HP-1]
+	
+- ( Ability that targets the player's front row, and increases ATK stat by 2 )
+	[P1; Row1;  ATK+2]
+	
+- ( Ability attacks lane 1 of both players, then adds every guardian that fell in the attack to the player's hand, from the discard pile )
+	[P1,OP1; Lane1; HP-1] 
+	[P1; Deck, Hand; ]
 ###### **Query Expression Parts** (and valid inputs)
 - **Field Target(s)** : ( P1, P2, P3, OP1, OP2, OP3 )
 - **Formation Target(s)** : 

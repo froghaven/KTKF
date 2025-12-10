@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Database_Decks\Database_Decks.sqlproj" />
+    <ProjectReference Include="..\System_DeckBuilder\System_DeckBuilder.csproj" />
+  </ItemGroup>
+
 </Project>

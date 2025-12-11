@@ -17,9 +17,12 @@ namespace System_Battle
         // FL1
         // FL2
         // FL3
-
-
-
+        // Row1
+        // Row2
+        // Row3
+        // Lane1
+        // Lane2
+        // Lane3
 
 
     }

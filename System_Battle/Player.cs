@@ -41,11 +41,6 @@ namespace System_Battle
             Player2, 
             Player3,
         }
-        public enum Action
-        {
-            Rock, 
-            Paper, 
-            Scissors
-        }
+       
     }
 }

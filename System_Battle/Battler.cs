@@ -28,7 +28,6 @@ namespace System_Battle
 
 
         public FieldManager Field;
-        public TurnManager TurnManager;
 
         public int FormationLimit { get; set; }
 
@@ -109,7 +108,7 @@ namespace System_Battle
         }
 
 
-        public void Enter_FormationLayout_Phase(List<Player> Players)
+        public void FormationSetup_Phase(List<Player> Players)
         {
             Console.WriteLine(COMessages[4]);
 
@@ -129,23 +128,13 @@ namespace System_Battle
         }
 
 
-        public void Enter_Battle_Phase()
+        public void Battle_Phase()
         {
-            // Turn Manager Selects Player
-
-            // Player Selects action query
-
-            // Turn Manager Sends Action query to Field Manager 
-
-            // Field Manager Updates Field => Sends Update to Turn Manager
-
-            // Turn Manager Updates Player
-
-            // Turn Manager Ends Player's Turn 
+            
         }  
 
 
-        public void ConludeBattle() { }
+        public void End_Phase() { }
 
     }
 }

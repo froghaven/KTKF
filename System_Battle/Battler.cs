@@ -1,6 +1,8 @@
 ﻿
 
 
+using System.Numerics;
+
 namespace System_Battle
 {
 
@@ -10,8 +12,15 @@ namespace System_Battle
     {
         // TODO : Hookup RPS System For Actual Player Input and Selection 
 
+        public FieldManager Field;
+
+        public int FormationLimit { get; set; }
+
 
         public List<Player> Players = new List<Player>();
+        Player Player1; 
+        Player Player2; 
+
 
         public static List<string> COMessages = new List<string>() 
         {
@@ -27,9 +36,7 @@ namespace System_Battle
         };
 
 
-        public FieldManager Field;
-
-        public int FormationLimit { get; set; }
+        
 
 
 
@@ -46,16 +53,17 @@ namespace System_Battle
                 rpsVictor = rpsResults.Value;
             }   while (rpsVictor == null);
 
+
             Console.WriteLine(COMessages[3]);
             if (rpsVictor.SelectedAction == "Player")
             {
-                player.ID = 1; Players.Add(player);
-                cpu.ID = 2; Players.Add(cpu);
+                Player1 = player; Player1.ID = 1;
+                Player2 = cpu; Player2.ID = 2;  
             }
             else
             {
-                cpu.ID = 1; Players.Add(cpu);
-                player.ID = 2; Players.Add(player);
+                Player1 = cpu; Player1.ID = 1; 
+                Player2 = player; Player2.ID = 2; 
             }
         }
         public Battler(Player home, Player away)
@@ -71,13 +79,13 @@ namespace System_Battle
             Console.WriteLine(COMessages[3]);
             if (rpsVictor.SelectedAction == "Home")
             {
-                home.ID = 1; Players.Add(home);
-                away.ID = 2; Players.Add(away);
+                Player1 = home; Player1.ID = 1;
+                Player2 = away; Player2.ID = 2;
             }
             else
             {
-                away.ID = 1; Players.Add(away);
-                home.ID = 2; Players.Add(home);
+                Player1 = away; Player1.ID = 1;
+                Player2 = home; Player2.ID = 2;
             }
         }
 
@@ -108,11 +116,21 @@ namespace System_Battle
         }
 
 
-        public void FormationSetup_Phase(List<Player> Players)
+        public void FormationSetup_Phase()
         {
             Console.WriteLine(COMessages[4]);
 
+            Field = new FieldManager(Player1, Player2);
+
+            Field.SetupFormation(); 
+
+            // Field Sends Layout Query For King To Player
+            // Player Completes Query With Selected Action 
+            // Field Updates Player Formation
             // P1 layout King 
+
+
+
             // P2 layout King 
 
             // While Formation is NOT FULL
@@ -134,7 +152,10 @@ namespace System_Battle
         }  
 
 
-        public void End_Phase() { }
+        public void MatchEnd_Phase() 
+        { 
+        
+        }
 
     }
 }

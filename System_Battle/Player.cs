@@ -21,6 +21,8 @@ namespace System_Battle
 
         public Deck Deck { get; set; }
 
+        public List<Card> Hand {  get; set; }
+
         public Formation Formation { get; set; }
 
 

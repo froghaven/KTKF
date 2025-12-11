@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System_DeckBuilder;
+
+
 
 namespace System_Battle
 {
@@ -17,8 +19,18 @@ namespace System_Battle
         public string SelectedAction { get; set; }
 
 
+        public Deck Deck { get; set; }
+
+        public Formation Formation { get; set; }
+
+
+
+
 
         public Player() { }
+
+
+
 
         public enum Type
         {

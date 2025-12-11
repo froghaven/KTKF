@@ -29,8 +29,8 @@ namespace Test_System_Battle
             List<string> victoryMessages = new List<string>()
             {
                 "Tie! Shoot Again!",
-                "Home IS THE VICTOR!",
-                "AWAY IS THE VICTOR!"
+                "Home IS THE VICTOR !!!",
+                "Away IS THE VICTOR !!!"
             }; 
 
 
